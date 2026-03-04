@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import image from "../assets/logo.png";
 import { AvatarButton, BellButton, useAuth } from "../AuthSystem";
 
 const Header = ({ onOpenAuth }) => {
@@ -20,10 +19,29 @@ const Header = ({ onOpenAuth }) => {
         {/* Glossy Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none" />
 
-        {/* LEFT: Logo */}
-        <div className="flex items-center gap-3 z-10">
-          <div className="p-1 bg-white/40 rounded-lg backdrop-blur-sm border border-white/50 shadow-sm transition-transform duration-500 ease-in-out hover:scale-125 cursor-pointer">
-            <img src={image} alt="Brand Logo" className="h-10 w-auto object-contain" />
+        {/* LEFT: Brand lockup */}
+        <div className="flex items-center gap-3 z-10 cursor-pointer group">
+          {/* Logo mark with layered glow */}
+          <div className="relative">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400/50 to-[#add6fd]/60 blur-[8px] scale-110 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500" />
+            <div className="relative p-1.5 bg-white/70 rounded-2xl backdrop-blur-sm border border-white/90 shadow-lg shadow-blue-100/60 group-hover:scale-105 transition-transform duration-500 ease-in-out">
+            </div>
+          </div>
+
+          {/* Wordmark */}
+          <div className="flex flex-col leading-none">
+            <span
+              className="text-[2rem] font-light italic text-slate-800 tracking-tight"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1.15 }}
+            >
+              Nazeef<span className="text-blue-600 font-semibold not-italic">.</span>
+            </span>
+            <span
+              className="text-[9px] font-bold tracking-[0.22em] uppercase text-blue-400"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Smart Laundry
+            </span>
           </div>
         </div>
 
@@ -124,3 +142,9 @@ const Header = ({ onOpenAuth }) => {
 };
 
 export default Header;
+
+// Ensure fonts load in this component tree
+const _style = document.createElement("link");
+_style.rel = "stylesheet";
+_style.href = "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap";
+if (!document.head.querySelector(`link[href="${_style.href}"]`)) document.head.appendChild(_style);
