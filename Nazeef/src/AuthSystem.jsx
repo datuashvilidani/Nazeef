@@ -186,14 +186,6 @@ export const AuthModal = ({ onClose }) => {
             )}
           </div>
 
-          {/* Forgot password */}
-          {tab === "login" && (
-            <div className="flex justify-end -mt-2">
-              <button className="text-xs text-blue-400 hover:text-blue-600 transition-colors underline underline-offset-4 decoration-blue-200" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Forgot password?
-              </button>
-            </div>
-          )}
 
           {/* Submit */}
           <button
